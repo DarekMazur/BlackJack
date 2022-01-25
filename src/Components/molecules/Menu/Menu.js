@@ -7,7 +7,7 @@ const Menu = () => {
   return (
     <StyledMenu>
       {socialMedia.map((social) => (
-        <MenuItem url={social.url} icon={social.icon} type={social.type} />
+        <MenuItem key={social.name} url={social.url} icon={social.icon} type={social.type} />
       ))}
     </StyledMenu>
   );
