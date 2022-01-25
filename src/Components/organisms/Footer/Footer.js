@@ -1,11 +1,14 @@
 import React from 'react';
+import { StyledFooter } from './Footer.styles';
+import { FooterCopy } from './FooterCopy/FooterCopy.styles';
 import FooterSocialMenu from './FooterSocialMenu/FooterSocialMenu';
 
 const Footer = () => {
   return (
-    <footer>
+    <StyledFooter>
+      <FooterCopy>2022 &copy; DarekMazur</FooterCopy>
       <FooterSocialMenu />
-    </footer>
+    </StyledFooter>
   );
 };
 

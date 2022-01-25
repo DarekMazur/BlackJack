@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { StyledMenuItem } from './MenuItem.styles';
 
 const MenuItem = ({ icon, url, type }) => {
