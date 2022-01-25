@@ -1,9 +1,10 @@
 import React from 'react';
+import FooterSocialMenu from './FooterSocialMenu/FooterSocialMenu';
 
 const Footer = () => {
   return (
     <footer>
-      <p>Lorem Ipsum</p>
+      <FooterSocialMenu />
     </footer>
   );
 };
