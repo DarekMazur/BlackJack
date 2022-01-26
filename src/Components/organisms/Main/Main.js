@@ -1,7 +1,8 @@
 import React from 'react';
+import { StyledMain } from './Main.styles';
 
 const Main = ({ children }) => {
-  return <main>{children}</main>;
+  return <StyledMain>{children}</StyledMain>;
 };
 
 export default Main;

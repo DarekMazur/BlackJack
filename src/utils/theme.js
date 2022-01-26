@@ -2,6 +2,10 @@ export const theme = {
   colors: {
     white: '#fff',
     green: '#076324',
+    lightYellow: '#076324',
+    darkYellow: '#A59132',
+    orange: '#DA7422',
+    dark: '#202030',
   },
   fonts: {
     mainFont: '"Montserrat", sans-serif',

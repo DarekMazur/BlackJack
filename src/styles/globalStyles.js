@@ -17,6 +17,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
+        margin: 0;
+        padding: 0;
         font-family: ${({ theme }) => theme.fonts.mainFont};
         color: ${({ theme }) => theme.colors.white};
         font-size: ${({ theme }) => theme.fontSize.m};
