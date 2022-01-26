@@ -11,7 +11,6 @@ export const StyledHome = styled.section`
   margin-bottom: -3rem;
   color: ${({ theme }) => theme.colors.white};
   padding: 3rem;
-  border-top: ${({ theme }) => `0.5rem solid ${theme.colors.white}`};
 
   &::before,
   &::after {
