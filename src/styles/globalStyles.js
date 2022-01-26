@@ -25,4 +25,8 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 2;
         background-color: ${({ theme }) => theme.colors.green};
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: ${({ theme }) => theme.fonts.headerFont};
+    }
 `;

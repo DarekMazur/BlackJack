@@ -1,10 +1,11 @@
 import React from 'react';
+import HomeScreen from '../Components/organisms/HomeScreen/HomeScreen';
 import Layout from '../Components/templates/Layout';
 
 function Root() {
   return (
     <Layout>
-      <div>Content</div>
+      <HomeScreen />
     </Layout>
   );
 }
