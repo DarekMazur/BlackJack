@@ -1,6 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { StyledMenuItem } from '../../Menu/MenuItem/MenuItem.styles';
 import token from '../../../../assets/token.png';
+
+const rotate = keyframes`
+  0% {
+    transform: rotateY(10);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+`;
 
 export const StyledNavigationListItem = styled(StyledMenuItem)`
   width: 100%;
@@ -19,10 +28,9 @@ export const StyledNavigationListItem = styled(StyledMenuItem)`
     margin-right: 1rem;
     height: 3rem;
     width: 3rem;
-    transition: transform 500ms ease-in-out;
   }
 
   &:hover::before {
-    transform: rotateY(180deg);
+    animation: 1s ${rotate} linear infinite;
   }
 `;
