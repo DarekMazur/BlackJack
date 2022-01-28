@@ -6,8 +6,14 @@ import { StyledHand } from './Hand.styles';
 const Hand = ({ isCroupier, cards }) => {
   return (
     <StyledHand>
-      <Image url={'https://deckofcardsapi.com/static/img/JC.png'} alt="" size={[15]} />
-      <Image url={isCroupier ? deck : 'https://deckofcardsapi.com/static/img/0C.png'} alt="" size={[15]} />
+      {cards.map((card, i) => (
+        <Image
+          key={i}
+          url={isCroupier && i === 1 ? deck : card.images.png}
+          alt={isCroupier && i === 1 ? 'card' : `${card.value} of ${card.suit}`}
+          size={[13]}
+        />
+      ))}
     </StyledHand>
   );
 };
