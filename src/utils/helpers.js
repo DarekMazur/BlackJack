@@ -4,3 +4,11 @@ export const getYear = () => {
 
   return year;
 };
+
+export const cardValue = (value) => {
+  if (value === 'JACK' || value === 'QUEEN' || value === 'KING') {
+    return 11;
+  } else {
+    return Number(value);
+  }
+};
