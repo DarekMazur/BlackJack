@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { StyledMenuItem } from '../../Menu/MenuItem/MenuItem.styles';
-import token from '../../../../assets/token.png';
+import token from '../../../../assets/images/token.png';
 
 const rotate = keyframes`
   0% {

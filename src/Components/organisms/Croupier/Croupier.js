@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import pile from '../../../assets/pile.png';
+import pile from '../../../assets/images/pile.png';
 import Image from '../../atoms/Title/Image/Image';
 import Hand from '../../molecules/Hand/Hand';
 

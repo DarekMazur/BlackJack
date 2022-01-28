@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from '../../atoms/Title/Image/Image';
-import deck from '../../../assets/deck.png';
+import deck from '../../../assets/images/deck.png';
 import { StyledHand } from './Hand.styles';
 
 const Hand = ({ isCroupier, cards }) => {

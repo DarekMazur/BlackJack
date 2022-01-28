@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledTitle } from '../../atoms/Title/Title.styles';
 import { StyledHeader } from './Header.styles';
 
-import token from '../../../assets/token.png';
+import token from '../../../assets/images/token.png';
 import Image from '../../atoms/Title/Image/Image';
 
 const Header = () => {
