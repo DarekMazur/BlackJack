@@ -5,9 +5,11 @@ export const getYear = () => {
   return year;
 };
 
-export const cardValue = (value) => {
+export const cardValue = (value, score) => {
   if (value === 'JACK' || value === 'QUEEN' || value === 'KING') {
-    return 11;
+    return 10;
+  } else if (value === 'ACE') {
+    return score < 12 ? 10 : 1;
   } else {
     return Number(value);
   }
