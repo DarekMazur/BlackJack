@@ -9,7 +9,7 @@ export const cardValue = (value, score) => {
   if (value === 'JACK' || value === 'QUEEN' || value === 'KING') {
     return 10;
   } else if (value === 'ACE') {
-    return score < 12 ? 10 : 1;
+    return score < 13 ? 11 : 1;
   } else {
     return Number(value);
   }

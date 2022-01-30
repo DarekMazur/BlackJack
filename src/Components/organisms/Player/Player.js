@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import Image from '../../atoms/Title/Image/Image';
 import Hand from '../../molecules/Hand/Hand';
+import token from '../../../assets/images/token.png';
+import redToken from '../../../assets/images/token_red.png';
+import blueToken from '../../../assets/images/token_blue.png';
+import { StackWrapper, Tokens } from '../../molecules/StackWrapper/StackWrapper.styles';
 
 const Player = () => {
   const [deck, setDeck] = useState({});
@@ -26,7 +31,34 @@ const Player = () => {
         .catch((err) => console.log(err.message));
     }
   }, [deck]);
-  return <>{cards.success ? <Hand cards={cards.cards} /> : 'Loading...'}</>;
+  return (
+    <>
+      <StackWrapper>
+        <Image url={token} alt="" size={[10]} />
+        <div>
+          <h3>Stack</h3>
+          <p>150$</p>
+        </div>
+      </StackWrapper>
+      {cards.success ? <Hand cards={cards.cards} /> : 'Loading...'}
+      <div>
+        <button>Hit</button>
+        <button>Stand</button>
+        <button>Double down</button>
+        <button>Insurance</button>
+      </div>
+      <StackWrapper>
+        <Tokens>
+          <Image url={redToken} alt="" size={[10]} />
+          <Image url={blueToken} alt="" size={[10]} />
+        </Tokens>
+        <div>
+          <h3>Bankroll</h3>
+          <p>500$</p>
+        </div>
+      </StackWrapper>
+    </>
+  );
 };
 
 export default Player;
