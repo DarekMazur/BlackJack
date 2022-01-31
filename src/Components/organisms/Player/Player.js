@@ -40,8 +40,13 @@ const Player = () => {
           <p>150$</p>
         </div>
       </StackWrapper>
+      <div>
+        <h3>Score</h3>
+        <p>14</p>
+      </div>
       {cards.success ? <Hand cards={cards.cards} /> : 'Loading...'}
       <div>
+        <button>Bet</button>
         <button>Hit</button>
         <button>Stand</button>
         <button>Double down</button>

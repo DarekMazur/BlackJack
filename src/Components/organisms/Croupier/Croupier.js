@@ -33,6 +33,10 @@ const Croupier = () => {
     <>
       <Image url={pile} alt="pile of cards" size={[13]} />
       {cards.success ? <Hand isCroupier cards={cards.cards} /> : 'Loading...'}
+      <div>
+        <h3>Score</h3>
+        <p>Waiting...</p>
+      </div>
     </>
   );
 };
