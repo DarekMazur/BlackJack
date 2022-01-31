@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import pile from '../../../assets/images/pile.png';
 import Image from '../../atoms/Title/Image/Image';
 import Hand from '../../molecules/Hand/Hand';
+import Score from '../../molecules/Score/Score';
 
 const Croupier = () => {
   const [deck, setDeck] = useState({});
@@ -33,10 +34,7 @@ const Croupier = () => {
     <>
       <Image url={pile} alt="pile of cards" size={[13]} />
       {cards.success ? <Hand isCroupier cards={cards.cards} /> : 'Loading...'}
-      <div>
-        <h3>Score</h3>
-        <p>Waiting...</p>
-      </div>
+      <Score />
     </>
   );
 };

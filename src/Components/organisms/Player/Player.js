@@ -5,10 +5,19 @@ import token from '../../../assets/images/token.png';
 import redToken from '../../../assets/images/token_red.png';
 import blueToken from '../../../assets/images/token_blue.png';
 import { StackWrapper, Tokens } from '../../molecules/StackWrapper/StackWrapper.styles';
+import Score from '../../molecules/Score/Score';
+import { cardValue } from '../../../utils/helpers';
 
 const Player = () => {
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState({});
+  const [score, setScore] = useState(0);
+
+  useEffect(() => {
+    if (cards.cards) {
+      cards.cards.forEach((card) => setScore((prevState) => prevState + cardValue(card.value)));
+    }
+  }, [cards]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_LINK}/${window.localStorage.deckID ? window.localStorage.deckID : 'new/shuffle/?deck_count=6'}`)
@@ -31,6 +40,7 @@ const Player = () => {
         .catch((err) => console.log(err.message));
     }
   }, [deck]);
+
   return (
     <>
       <StackWrapper>
@@ -40,15 +50,14 @@ const Player = () => {
           <p>150$</p>
         </div>
       </StackWrapper>
-      <div>
-        <h3>Score</h3>
-        <p>14</p>
-      </div>
+      <Score score={score} isTurn />
       {cards.success ? <Hand cards={cards.cards} /> : 'Loading...'}
+
+      {console.log(score)}
       <div>
         <button>Bet</button>
-        <button>Hit</button>
-        <button>Stand</button>
+        <button isActive={score < 22}>Hit</button>
+        <button isActive={score < 22}>Stand</button>
         <button>Double down</button>
         <button>Insurance</button>
       </div>
