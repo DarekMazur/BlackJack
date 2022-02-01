@@ -10,12 +10,13 @@ import { cardValue } from '../../../utils/helpers';
 
 const Player = () => {
   const [deck, setDeck] = useState({});
-  const [cards, setCards] = useState({});
+  const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
+  const [remaining, setRemaining] = useState(0);
 
   useEffect(() => {
-    if (cards.cards) {
-      cards.cards.forEach((card) => setScore((prevState) => prevState + cardValue(card.value)));
+    if (cards) {
+      cards.forEach((card) => setScore((prevState) => prevState + cardValue(card.value, card.value + score)));
     }
   }, [cards]);
 
@@ -24,6 +25,7 @@ const Player = () => {
       .then((res) => res.json())
       .then((data) => {
         setDeck(data);
+        setRemaining(data.remaining);
         if (!window.localStorage.deckID) {
           window.localStorage.setItem('deckID', data.deck_id);
         }
@@ -35,11 +37,23 @@ const Player = () => {
       fetch(`${process.env.REACT_APP_API_LINK}/${deck.deck_id}/draw/?count=2`)
         .then((res) => res.json())
         .then((data) => {
-          setCards(data);
+          setCards(data.cards);
+          setRemaining(data.remaining);
         })
         .catch((err) => console.log(err.message));
     }
   }, [deck]);
+
+  const handleHit = () => {
+    fetch(`${process.env.REACT_APP_API_LINK}/${deck.deck_id}/draw/?count=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        setScore(0);
+        setRemaining(data.remaining);
+        setCards((cards) => [...cards, ...data.cards]);
+      })
+      .catch((err) => console.log(err.message));
+  };
 
   return (
     <>
@@ -51,12 +65,13 @@ const Player = () => {
         </div>
       </StackWrapper>
       <Score score={score} isTurn />
-      {cards.success ? <Hand cards={cards.cards} /> : 'Loading...'}
+      {cards?.length !== 0 ? <Hand cards={cards} /> : 'Loading...'}
 
-      {console.log(score)}
       <div>
         <button>Bet</button>
-        <button isActive={score < 22}>Hit</button>
+        <button isActive={score < 22} onClick={handleHit}>
+          Hit
+        </button>
         <button isActive={score < 22}>Stand</button>
         <button>Double down</button>
         <button>Insurance</button>
