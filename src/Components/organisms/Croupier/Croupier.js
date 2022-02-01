@@ -34,7 +34,7 @@ const Croupier = () => {
     <>
       {/* <Image url={pile} alt="pile of cards" size={[13]} /> */}
       {cards.success ? <Hand isCroupier cards={cards.cards} /> : 'Loading...'}
-      <Score />
+      <Score isCroupier />
     </>
   );
 };

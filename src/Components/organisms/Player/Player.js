@@ -15,6 +15,8 @@ const Player = () => {
   const [remaining, setRemaining] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [croupierTurn, setCroupiertTurn] = useState(false);
+  const [isDouble, setIsDouble] = useState(false);
+  const [isInsurence, setIsInsurence] = useState(false);
 
   useEffect(() => {
     if (cards) {
@@ -90,10 +92,10 @@ const Player = () => {
       <div>
         <button>Bet</button>
         <div>
-          <button isActive={score < 22} onClick={handleOnClickHit}>
+          <button isActive={isActive} onClick={handleOnClickHit}>
             Hit
           </button>
-          <button isActive={score < 22} onClick={handleOnClickStand}>
+          <button isActive={isActive} onClick={handleOnClickStand}>
             Stand
           </button>
           <button>Double down</button>
