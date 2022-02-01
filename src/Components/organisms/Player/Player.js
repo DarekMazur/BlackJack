@@ -13,12 +13,24 @@ const Player = () => {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [remaining, setRemaining] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [croupierTurn, setCroupiertTurn] = useState(false);
 
   useEffect(() => {
     if (cards) {
-      cards.forEach((card) => setScore((prevState) => prevState + cardValue(card.value, card.value + score)));
+      cards.forEach((card) => setScore((prevState) => prevState + cardValue(card.value, prevState)));
     }
   }, [cards]);
+
+  useEffect(() => {
+    if (remaining === 0) {
+      fetch(`${process.env.REACT_APP_API_LINK}/${window.localStorage.deckID}/shuffle/`)
+        .then((res) => res.json())
+        .then((data) => {
+          setRemaining(data.remaining);
+        });
+    }
+  }, [remaining]);
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_LINK}/${window.localStorage.deckID ? window.localStorage.deckID : 'new/shuffle/?deck_count=6'}`)
@@ -44,15 +56,23 @@ const Player = () => {
     }
   }, [deck]);
 
-  const handleHit = () => {
+  const handleOnClickHit = () => {
     fetch(`${process.env.REACT_APP_API_LINK}/${deck.deck_id}/draw/?count=1`)
       .then((res) => res.json())
       .then((data) => {
         setScore(0);
         setRemaining(data.remaining);
         setCards((cards) => [...cards, ...data.cards]);
+        if (score > 21) {
+          setIsActive(false);
+        }
       })
       .catch((err) => console.log(err.message));
+  };
+
+  const handleOnClickStand = () => {
+    setIsActive(false);
+    setCroupiertTurn(true);
   };
 
   return (
@@ -70,10 +90,12 @@ const Player = () => {
       <div>
         <button>Bet</button>
         <div>
-          <button isActive={score < 22} onClick={handleHit}>
+          <button isActive={score < 22} onClick={handleOnClickHit}>
             Hit
           </button>
-          <button isActive={score < 22}>Stand</button>
+          <button isActive={score < 22} onClick={handleOnClickStand}>
+            Stand
+          </button>
           <button>Double down</button>
           <button>Insurance</button>
         </div>
