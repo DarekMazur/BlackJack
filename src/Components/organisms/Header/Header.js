@@ -3,7 +3,7 @@ import { StyledTitle } from '../../atoms/Title/Title.styles';
 import { StyledHeader } from './Header.styles';
 
 import token from '../../../assets/images/token.png';
-import Image from '../../atoms/Title/Image/Image';
+import Image from '../../atoms/Image/Image';
 
 const Header = () => {
   return (

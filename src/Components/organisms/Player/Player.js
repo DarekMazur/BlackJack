@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Image from '../../atoms/Title/Image/Image';
+import Image from '../../atoms/Image/Image';
 import Hand from '../../molecules/Hand/Hand';
 import token from '../../../assets/images/token.png';
 import redToken from '../../../assets/images/token_red.png';
@@ -69,12 +69,14 @@ const Player = () => {
 
       <div>
         <button>Bet</button>
-        <button isActive={score < 22} onClick={handleHit}>
-          Hit
-        </button>
-        <button isActive={score < 22}>Stand</button>
-        <button>Double down</button>
-        <button>Insurance</button>
+        <div>
+          <button isActive={score < 22} onClick={handleHit}>
+            Hit
+          </button>
+          <button isActive={score < 22}>Stand</button>
+          <button>Double down</button>
+          <button>Insurance</button>
+        </div>
       </div>
       <StackWrapper>
         <Tokens>

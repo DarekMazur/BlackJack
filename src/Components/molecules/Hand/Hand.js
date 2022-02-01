@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from '../../atoms/Title/Image/Image';
+import Image from '../../atoms/Image/Image';
 import deck from '../../../assets/images/deck.png';
 import { StyledHand } from './Hand.styles';
 
